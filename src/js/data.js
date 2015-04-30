@@ -6,7 +6,7 @@ var workPresets = function(workTermIndex) {
   var totalTerms = 6;
 
   var waterlooEarningsLow = 3520;
-  var waterlooEarningsHigh = 5000;
+  var waterlooEarningsHigh = 5600;
   presets.push({
     name: "Waterloo",
     values: {
@@ -16,7 +16,7 @@ var workPresets = function(workTermIndex) {
   });
 
   var torontoEarningsLow = 3520;
-  var torontoEarningsHigh = 5420;
+  var torontoEarningsHigh = 5960;
   presets.push({
     name: "Toronto",
     values: {
@@ -25,13 +25,13 @@ var workPresets = function(workTermIndex) {
     }
   });
 
-  var sfEarningsLow = 5500;
-  var sfEarningsHigh = 7000;
+  var sfEarningsLow = 7260; //  $36/h + housing
+  var sfEarningsHigh = 8700; // $45/h + housing
   presets.push({
     name: "San Francisco Bay Area",
     values: {
       earnings: sfEarningsLow + ((sfEarningsHigh - sfEarningsLow) / totalTerms) * workTermIndex,
-      housing: 2000,
+      housing: 2500,
     }
   });
 
@@ -58,14 +58,14 @@ var schoolTerm = function(name) {
         name: "Tuition",
         multiplier: -1,
         value: {
-          "1A":  4729.00,
-          "1B":  4729.00,
-          "2A":  4918.00,
-          "2B":  5114.00,
-          "3A":  5114.00,
-          "3B":  5318.00,
-          "4A":  5530.00,
-          "4B":  5530.00,
+          "1A":  5883.00,
+          "1B":  5883.00,
+          "2A":  5883.00,
+          "2B":  5771.00,
+          "3A":  5771.00,
+          "3B":  5634.00,
+          "4A":  5501.00,
+          "4B":  5299.00,
         }[name],
       },
       {
@@ -73,14 +73,14 @@ var schoolTerm = function(name) {
         name: "School Fees",
         multiplier: -1,
         value: {
-          "1A": 1191.67,
-          "1B": 1160.67,
-          "2A": 1124.24,
-          "2B": 1328.43,
-          "3A": 1139.38,
-          "3B": 1173.35,
-          "4A": 1192.35,
-          "4B": 1159.15,
+          "1A": 1133.15,
+          "1B": 1133.15,
+          "2A": 1133.15,
+          "2B": 1133.15,
+          "3A": 1133.15,
+          "3B": 1133.15,
+          "4A": 1133.15,
+          "4B": 1133.15,
         }[name],
       },
       {
@@ -106,26 +106,30 @@ var schoolTerm = function(name) {
         name: "Housing",
         unit: "month",
         multiplier: -4,
+        value: {
+          "1A": 671.75,
+          "1B": 671.75,
+        }[name],
         defaults: [
+          {
+            name: "Off-Campus",
+            value: "500.00"
+          },
+          {
+            name: "With Parents",
+            value: "0.00",
+          },
+          {
+            name: "Off-Campus (Cheap)",
+            value: "350.00",
+          },
           {
             name: "V1, REV, MKV",
             value: "671.75",
           },
           {
             name: "VeloCity",
-            value: "728.75",
-          },
-          {
-            name: "Off-Campus (Cheap)",
-            value: "400.00",
-          },
-          {
-            name: "Off-Campus",
-            value: "620.00",
-          },
-          {
-            name: "With Parents",
-            value: "0.00",
+            value: "775.75",
           },
         ],
       },
