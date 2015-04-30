@@ -50,8 +50,7 @@ calculator.controller('CalculatorController', function ($scope) {
       return _.map(terms, function(term) {
         return _.map(term.fields, function(field) {
           if (field.id == "tuition") {
-            // Assume isTuitionDomestic is initially true.
-            field.value *= $scope.isTuitionDomestic ? 0.5 : 2;
+            field.value = tuition[term.id] * ($scope.isTuitionDomestic ? 1 : 2);
           }
           return parseFloat(field.value);
         });

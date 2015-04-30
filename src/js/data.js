@@ -1,6 +1,17 @@
 terms = ["1A", "1B",  "WT1", "2A",  "WT2", "2B",  "WT3",
          "3A", "WT4", "3B",  "WT5", "4A",  "WT6", "4B"];
 
+tuition = {
+  "1A":  5883.00,
+  "1B":  5883.00,
+  "2A":  5883.00,
+  "2B":  5771.00,
+  "3A":  5771.00,
+  "3B":  5634.00,
+  "4A":  5501.00,
+  "4B":  5299.00,
+};
+
 var workPresets = function(workTermIndex) {
   var presets = [];
   var totalTerms = 6;
@@ -57,16 +68,7 @@ var schoolTerm = function(name) {
         id: "tuition",
         name: "Tuition",
         multiplier: -1,
-        value: {
-          "1A":  5883.00,
-          "1B":  5883.00,
-          "2A":  5883.00,
-          "2B":  5771.00,
-          "3A":  5771.00,
-          "3B":  5634.00,
-          "4A":  5501.00,
-          "4B":  5299.00,
-        }[name],
+        value: tuition[name],
       },
       {
         id: "fees",
