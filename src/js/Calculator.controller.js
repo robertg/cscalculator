@@ -1,6 +1,7 @@
 var calculator = angular.module('calculator', ['fcsa-number']);
 
 calculator.controller('CalculatorController', function ($scope) {
+  $scope.isTuitionDomestic = true; // Must be true as a requirement of $scope.changeTuition.
   $scope.data = data;
 
   $scope.applyDefault = function(field, _default) {
@@ -42,6 +43,19 @@ calculator.controller('CalculatorController', function ($scope) {
     } catch (e) {
       console.log("Could not load data: ", e);
     }
+  };
+
+  $scope.changeTuition = function() {
+    var values = _.map($scope.data.years, function(terms) {
+      return _.map(terms, function(term) {
+        return _.map(term.fields, function(field) {
+          if (field.id == "tuition") {
+            field.value = tuition[term.id] * ($scope.isTuitionDomestic ? 1 : 2);
+          }
+          return parseFloat(field.value);
+        });
+      });
+    });
   };
 
   if (window.location.hash) {
